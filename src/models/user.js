@@ -1,5 +1,5 @@
-  
 const mongoose = require('mongoose');
+const Friends = require('./request')
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -28,6 +28,7 @@ const userSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Friends'}],
     date: {
         type: Date,
         default: Date.now,
