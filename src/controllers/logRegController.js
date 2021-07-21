@@ -11,7 +11,7 @@ async function registration(req,res){
     if(error) return res.status(400).json({error: error.details[0].message});
     
     const isEmailExist = await User.findOne({email: req.body.email})
-    if(isEmailExist)return res.status(400).json({ error: "Email already exists" });
+    if(isEmailExist) return res.status(400).json({ error: "Email already exists" });
 
     const salt = await bcrypt.genSalt(10);
     const password = await bcrypt.hash(req.body.password,salt);
