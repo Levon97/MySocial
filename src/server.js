@@ -1,8 +1,13 @@
+require('dotenv').config()
 const configs = require('../configs');
 
 const express = require('express');
 const  mongoose = require('mongoose')
+const logRegState = require('./routes/logRegState')
 const app = express();
+
+app.use(express.json());
+app.use('/', logRegState);
 
 (async () => {
     try {

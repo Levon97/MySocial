@@ -1,7 +1,7 @@
 require('dotenv').config;
 
 const { registrationValidation, loginValidation } = require('../validation');
-const User = reqwuire('..models/user');
+const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const bcrypt =  require('bcrypt');
 
@@ -21,6 +21,7 @@ async function registration(req,res){
         lastName: req.body.lastName,
         email: req.body.email,
         password,
+        age: req.body.age,
     });
     try{
         const savedUser = await user.save();
